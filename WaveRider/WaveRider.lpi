@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="12"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <Title Value="WAVE RIDER"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+    </General>
+    <BuildModes>
+      <Item Name="Release" Default="True"/>
+      <Item Name="Debug">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="bin\WaveRider_dbg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir);src;..\DottedWave\src"/>
+            <OtherUnitFiles Value="src;..\DottedWave\src"/>
+            <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)-dbg"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <Checks>
+              <IOChecks Value="True"/>
+              <RangeChecks Value="True"/>
+              <OverflowChecks Value="True"/>
+            </Checks>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf3"/>
+            </Debugging>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+        </CompilerOptions>
+      </Item>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+    </RunParams>
+    <RequiredPackages>
+      <Item>
+        <PackageName Value="BGRABitmapPack"/>
+      </Item>
+      <Item>
+        <PackageName Value="LazOpenGLContext"/>
+      </Item>
+      <Item>
+        <PackageName Value="LCL"/>
+      </Item>
+    </RequiredPackages>
+    <Units>
+      <Unit>
+        <Filename Value="WaveRider.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ugame.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGame"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ugameform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGameForm"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ugamedata.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGameData"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ugameview.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGameView"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ugfx.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uGfx"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\uparams.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uParams"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\usynth.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uSynth"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\umusic.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uMusic"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\uaudio.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uAudio"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\ulightfx.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uLightFx"/>
+      </Unit>
+      <Unit>
+        <Filename Value="src\uanime.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uAnime"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\DottedWave\src\uwaveengine.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uWaveEngine"/>
+      </Unit>
+      <Unit>
+        <Filename Value="..\DottedWave\src\uwavetypes.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="uWaveTypes"/>
+      </Unit>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="bin\WaveRider"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir);src;..\DottedWave\src"/>
+      <OtherUnitFiles Value="src;..\DottedWave\src"/>
+      <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <CodeGeneration>
+      <SmartLinkUnit Value="True"/>
+      <Optimizations>
+        <OptimizationLevel Value="3"/>
+      </Optimizations>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <GenerateDebugInfo Value="False"/>
+      </Debugging>
+      <LinkSmart Value="True"/>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+</CONFIG>
