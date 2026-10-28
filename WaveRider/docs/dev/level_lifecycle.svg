@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="520" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Life of one level (time line)</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+
+  <!-- axis -->
+  <line x1="40" y1="250" x2="1060" y2="250" stroke="#444" stroke-width="2" marker-end="url(#a)"/>
+  <text x="1050" y="275" text-anchor="end" fill="#444">time</text>
+
+  <!-- ready -->
+  <rect x="40" y="90" width="200" height="140" rx="8" fill="#fff4d6" stroke="#c98a1b"/>
+  <text x="140" y="114" text-anchor="middle" font-weight="bold">gsReady  2.4 s</text>
+  <text x="140" y="138" text-anchor="middle" fill="#555">countdown 3-2-1 (0.6 s each)</text>
+  <text x="140" y="160" text-anchor="middle" fill="#555">+ GO</text>
+  <text x="140" y="186" text-anchor="middle" fill="#c98a1b" font-weight="bold">Level card shown</text>
+  <text x="140" y="206" text-anchor="middle" fill="#555">LEVEL n / NAME / subtitle</text>
+
+  <!-- card fade -->
+  <rect x="240" y="90" width="120" height="140" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+  <text x="300" y="114" text-anchor="middle" font-weight="bold">0 .. 1.2 s</text>
+  <text x="300" y="138" text-anchor="middle" fill="#555">card fades</text>
+  <text x="300" y="158" text-anchor="middle" fill="#555">alpha 1 - t/1.2</text>
+  <text x="300" y="186" text-anchor="middle" fill="#555">DrawLevelCard</text>
+
+  <!-- play -->
+  <rect x="360" y="90" width="520" height="140" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+  <text x="620" y="114" text-anchor="middle" font-weight="bold">gsPlaying  (Duration s, 0 = Endless)</text>
+  <text x="380" y="140" fill="#333">progress p = PlayTime / Duration   (Endless: / 240)</text>
+  <text x="380" y="162" fill="#333">scroll speed = SpeedStart -> SpeedEnd by p</text>
+  <text x="380" y="184" fill="#333">spawn rate x (1 + (RateRamp - 1) p), bonus x (0.8 + 0.4 p)</text>
+  <text x="380" y="206" fill="#333">accumulators: every 1.0 spawns one object from the Mix (weighted)</text>
+
+  <!-- end -->
+  <rect x="880" y="90" width="180" height="62" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+  <text x="970" y="114" text-anchor="middle" font-weight="bold">time up</text>
+  <text x="970" y="136" text-anchor="middle" fill="#555">gsComplete, stars 1-3</text>
+  <rect x="880" y="168" width="180" height="62" rx="8" fill="#f9e0e0" stroke="#c94a4a"/>
+  <text x="970" y="192" text-anchor="middle" font-weight="bold">lives = 0</text>
+  <text x="970" y="214" text-anchor="middle" fill="#555">gsGameOver</text>
+
+  <!-- rate curve -->
+  <text x="40" y="310" font-weight="bold">Spawn rate during the level (example: Calm Waters, ramp 1.8)</text>
+  <line x1="360" y1="460" x2="880" y2="460" stroke="#999"/>
+  <line x1="360" y1="460" x2="360" y2="330" stroke="#999"/>
+  <path d="M360 420 L880 356" stroke="#3a9a52" stroke-width="3" fill="none"/>
+  <path d="M360 446 L880 420" stroke="#c94a4a" stroke-width="3" fill="none"/>
+  <path d="M360 454 L880 448" stroke="#b5427e" stroke-width="3" fill="none"/>
+  <text x="890" y="360" fill="#3a9a52">collect 1.4 -> 2.5 /s</text>
+  <text x="890" y="424" fill="#c94a4a">hazard 0.3 -> 0.54 /s</text>
+  <text x="890" y="452" fill="#b5427e">bonus ~0.05 /s</text>
+  <text x="370" y="480" fill="#777">p = 0</text>
+  <text x="870" y="480" text-anchor="end" fill="#777">p = 1</text>
+
+  <text x="40" y="350" fill="#333">Stars:</text>
+  <text x="40" y="372" fill="#555">score >= Star1 / Star2 / Star3</text>
+  <text x="40" y="402" fill="#333">Progress (not in sim / bot):</text>
+  <text x="40" y="424" fill="#555">Best[i], Stars[i], Unlocked = i + 2</text>
+  <text x="40" y="446" fill="#555">-> bin/waverider.ini</text>
+</svg>

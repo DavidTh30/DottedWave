@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="600" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">WATCH BOT brain (UpdateBot, every 1/30 s)</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+
+  <!-- playfield -->
+  <rect x="40" y="60" width="300" height="520" rx="6" fill="#14141c"/>
+  <text x="190" y="84" text-anchor="middle" fill="#aaa">play field</text>
+  <g fill="#6f8fd8">
+    <circle cx="55" cy="320" r="4"/><circle cx="82" cy="320" r="4"/><circle cx="109" cy="320" r="4"/><circle cx="136" cy="320" r="4"/><circle cx="163" cy="320" r="4"/><circle cx="190" cy="320" r="4"/><circle cx="217" cy="320" r="4"/><circle cx="244" cy="320" r="4"/><circle cx="271" cy="320" r="4"/><circle cx="298" cy="320" r="4"/><circle cx="325" cy="320" r="4"/>
+    <circle cx="55" cy="367" r="4"/><circle cx="82" cy="367" r="4"/><circle cx="109" cy="367" r="4"/><circle cx="136" cy="367" r="4"/><circle cx="163" cy="367" r="4"/><circle cx="190" cy="367" r="4"/><circle cx="217" cy="367" r="4"/><circle cx="244" cy="367" r="4"/><circle cx="271" cy="367" r="4"/><circle cx="298" cy="367" r="4"/><circle cx="325" cy="367" r="4"/>
+    <circle cx="55" cy="414" r="4"/><circle cx="82" cy="414" r="4"/><circle cx="109" cy="414" r="4"/><circle cx="136" cy="414" r="4"/><circle cx="163" cy="414" r="4"/><circle cx="190" cy="414" r="4"/><circle cx="217" cy="414" r="4"/><circle cx="244" cy="414" r="4"/><circle cx="271" cy="414" r="4"/><circle cx="298" cy="414" r="4"/><circle cx="325" cy="414" r="4"/>
+    <circle cx="55" cy="461" r="4"/><circle cx="82" cy="461" r="4"/><circle cx="109" cy="461" r="4"/><circle cx="136" cy="461" r="4"/><circle cx="163" cy="461" r="4"/><circle cx="190" cy="461" r="4"/><circle cx="217" cy="461" r="4"/><circle cx="244" cy="461" r="4"/><circle cx="271" cy="461" r="4"/><circle cx="298" cy="461" r="4"/><circle cx="325" cy="461" r="4"/>
+    <circle cx="55" cy="508" r="4"/><circle cx="82" cy="508" r="4"/><circle cx="109" cy="508" r="4"/><circle cx="136" cy="508" r="4"/><circle cx="163" cy="508" r="4"/><circle cx="190" cy="508" r="4"/><circle cx="217" cy="508" r="4"/><circle cx="244" cy="508" r="4"/><circle cx="271" cy="508" r="4"/><circle cx="298" cy="508" r="4"/><circle cx="325" cy="508" r="4"/>
+  </g>
+  <circle cx="217" cy="414" r="11" fill="none" stroke="#7fe08a" stroke-width="3"/>
+  <circle cx="163" cy="461" r="9" fill="#fff"/>
+  <text x="140" y="486" fill="#fff" font-size="11">ship</text>
+  <path d="M163 461 L210 420" stroke="#7fe08a" stroke-width="2" marker-end="url(#a)"/>
+  <circle cx="250" cy="200" r="13" fill="#c94a4a"/>
+  <path d="M250 200 L235 330" stroke="#c94a4a" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#a)"/>
+  <text x="268" y="196" fill="#f99" font-size="11">hazard + VX,VY</text>
+  <circle cx="110" cy="230" r="9" fill="#5fd0ff"/>
+  <path d="M110 230 L110 350" stroke="#5fd0ff" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#a)"/>
+  <text x="70" y="222" fill="#9df" font-size="11">pickup</text>
+  <text x="190" y="560" text-anchor="middle" fill="#aaa">11 x 5 candidates, rows at 50 % .. 86 % height</text>
+
+  <!-- steps -->
+  <g>
+    <rect x="380" y="60" width="690" height="80" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+    <text x="400" y="84" font-weight="bold">1  Measure</text>
+    <text x="400" y="106" fill="#333">every entity keeps VX, VY measured from its real movement (all motion types, slow-mo included)</text>
+    <text x="400" y="126" fill="#333">BotGrating: if 3+ hazards are near, hold the grating charge and release it</text>
+
+    <rect x="380" y="152" width="690" height="120" rx="8" fill="#f9e0e0" stroke="#c94a4a"/>
+    <text x="400" y="176" font-weight="bold">2  Danger for each candidate (hazards, horizon 1.0 s, step 0.1 s)</text>
+    <text x="400" y="198" fill="#333">ship travels in a straight line to the candidate (1400 px/s)</text>
+    <text x="400" y="218" fill="#333">closest approach inside every 0.1 s step, so fast comets cannot slip through</text>
+    <text x="400" y="238" fill="#333">Homing bends toward the ship, Orbit keeps extra room (MotionAmp x 0.35)</text>
+    <text x="400" y="258" fill="#333">inside radius: + 4000 x (1.2 - t) x depth; near: + 120 x ... (soft margin)</text>
+
+    <rect x="380" y="284" width="690" height="80" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+    <text x="400" y="308" font-weight="bold">3  Value (pickups at the predicted meeting point)</text>
+    <text x="400" y="330" fill="#333">bonus 900, collect 220 + 2 x Score, divided by (1 + distance / 60)</text>
+    <text x="400" y="350" fill="#333">shield or invulnerable: hazards ignored</text>
+
+    <rect x="380" y="376" width="690" height="80" rx="8" fill="#fff4d6" stroke="#c98a1b"/>
+    <text x="400" y="400" font-weight="bold">4  Cost of moving</text>
+    <text x="400" y="422" fill="#333">0.15 x travel + 0.05 x change from last target (no jitter) + 0.08 x distance from the 72 % line</text>
+    <text x="400" y="442" fill="#333">lowest total cost wins: TargetX / TargetY (mouse mode)</text>
+
+    <rect x="380" y="468" width="690" height="112" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+    <text x="400" y="492" font-weight="bold">Super Hard show (HardMul)</text>
+    <text x="400" y="514" fill="#333">speed x1.3, hazards x1.6, collect / bonus x1.2</text>
+    <text x="400" y="534" fill="#333">Endless: grows after 60 s up to speed x1.7 and hazards x3, so the show ends</text>
+    <text x="400" y="554" fill="#333">level 1 -> last -> Endless, +1 life per cleared level (max 6), no progress saved</text>
+    <text x="400" y="574" fill="#333">focus loss does not pause; PAUSE / EXIT buttons, P / Space / right click, Esc / Enter</text>
+  </g>
+</svg>

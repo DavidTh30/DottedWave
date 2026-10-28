@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="620" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Combo is the hub: one number drives score, music, color and the guardian</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+
+  <!-- inputs -->
+  <g>
+    <rect x="30" y="80" width="230" height="56" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+    <text x="145" y="104" text-anchor="middle" font-weight="bold">collect a Collect object</text>
+    <text x="145" y="124" text-anchor="middle" fill="#3a9a52">Combo + 1 (max x9)</text>
+    <rect x="30" y="160" width="230" height="56" rx="8" fill="#f9e0e0" stroke="#c94a4a"/>
+    <text x="145" y="184" text-anchor="middle" font-weight="bold">hit by a Hazard</text>
+    <text x="145" y="204" text-anchor="middle" fill="#c94a4a">Combo = 1, life - 1, 2 s invulnerable</text>
+    <rect x="30" y="240" width="230" height="56" rx="8" fill="#fff4d6" stroke="#c98a1b"/>
+    <text x="145" y="264" text-anchor="middle" font-weight="bold">let a Collect fall off</text>
+    <text x="145" y="284" text-anchor="middle" fill="#c98a1b">Combo - 2 (min x1)</text>
+    <rect x="30" y="320" width="230" height="56" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+    <text x="145" y="344" text-anchor="middle" font-weight="bold">Fever bonus</text>
+    <text x="145" y="364" text-anchor="middle" fill="#b5427e">Combo locked at x9</text>
+  </g>
+
+  <!-- hub -->
+  <circle cx="500" cy="230" r="92" fill="#eef1ff" stroke="#4a73c9" stroke-width="2"/>
+  <text x="500" y="222" text-anchor="middle" font-size="22" font-weight="bold" fill="#2b4a99">Combo</text>
+  <text x="500" y="246" text-anchor="middle" fill="#444">1 .. 9</text>
+  <text x="500" y="268" text-anchor="middle" fill="#666" font-size="12">intensity = (combo-1)/8</text>
+
+  <!-- outputs -->
+  <g>
+    <rect x="700" y="60" width="370" height="62" rx="8" fill="#fff" stroke="#888"/>
+    <text x="715" y="84" font-weight="bold">Score</text>
+    <text x="715" y="106" fill="#555">points = Score x Combo x Double power</text>
+    <rect x="700" y="134" width="370" height="62" rx="8" fill="#fff" stroke="#888"/>
+    <text x="715" y="158" font-weight="bold">Music (TSongPlayer.Intensity)</text>
+    <text x="715" y="180" fill="#555">0.85 x intensity + 0.04 x difficulty</text>
+    <rect x="700" y="208" width="370" height="62" rx="8" fill="#fff" stroke="#888"/>
+    <text x="715" y="232" font-weight="bold">Mesh color</text>
+    <text x="715" y="254" fill="#555">iriSpeed = 1 + 0.6 x combo, iri = IriBase .. 1 by intensity</text>
+    <rect x="700" y="282" width="370" height="62" rx="8" fill="#fff" stroke="#888"/>
+    <text x="715" y="306" font-weight="bold">Newton's Prisms guardian</text>
+    <text x="715" y="328" fill="#555">crossing x3 spawns it; each higher combo +1 HP, +1.5 s</text>
+    <rect x="700" y="356" width="370" height="62" rx="8" fill="#fff" stroke="#888"/>
+    <text x="715" y="380" font-weight="bold">Feedback</text>
+    <text x="715" y="402" fill="#555">COMBO cut-in at x3/5/7/9 (35 %), collect_hi from x6</text>
+    <rect x="700" y="430" width="370" height="62" rx="8" fill="#fff" stroke="#888"/>
+    <text x="715" y="454" font-weight="bold">Anime levels</text>
+    <text x="715" y="476" fill="#555">chibi "excitement" follows intensity</text>
+  </g>
+
+  <g stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M260 108 L412 200"/><path d="M260 188 L408 222"/><path d="M260 268 L410 250"/><path d="M260 348 L420 280"/>
+    <path d="M590 200 L698 91"/><path d="M592 215 L698 165"/><path d="M592 232 L698 239"/>
+    <path d="M590 250 L698 313"/><path d="M584 268 L698 387"/><path d="M574 284 L698 461"/>
+  </g>
+
+  <rect x="30" y="520" width="1040" height="70" rx="8" fill="#fafafa" stroke="#bbb"/>
+  <text x="50" y="546" fill="#333">Code: ApplyEffect (combo + score), Hit (reset), UpdatePlay (fall-off -2), ComboIntensity, UpdateMusic, ApplyToEngine (iriSpeed),</text>
+  <text x="50" y="568" fill="#333">NewtonCombo(old, new) is called whenever the combo changes, CutIn('COMBO xN') + 'combo' sound at x3, x5, x7 and x9.</text>
+</svg>

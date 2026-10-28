@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="520" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">One frame (TGameForm.GLPaint, about 60 times per second)</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+
+  <g>
+    <rect x="30" y="70" width="170" height="80" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+    <text x="115" y="98" text-anchor="middle" font-weight="bold">1  dt</text>
+    <text x="115" y="118" text-anchor="middle" fill="#555">QueryPerformanceCounter</text>
+    <text x="115" y="136" text-anchor="middle" fill="#555">clamp 0..50 ms</text>
+
+    <rect x="230" y="70" width="190" height="80" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+    <text x="325" y="98" text-anchor="middle" font-weight="bold">2  Game.Update(dt)</text>
+    <text x="325" y="118" text-anchor="middle" fill="#555">state, ship, spawn, collide</text>
+    <text x="325" y="136" text-anchor="middle" fill="#555">weapons, bot, anime, music</text>
+
+    <rect x="450" y="70" width="190" height="80" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+    <text x="545" y="98" text-anchor="middle" font-weight="bold">3  ApplyToEngine</text>
+    <text x="545" y="118" text-anchor="middle" fill="#555">mesh preset, iridescence</text>
+    <text x="545" y="136" text-anchor="middle" fill="#555">Wells, Rings, ScrollY</text>
+
+    <rect x="670" y="70" width="190" height="80" rx="8" fill="#f2f2f2" stroke="#888"/>
+    <text x="765" y="98" text-anchor="middle" font-weight="bold">4  Engine.Render</text>
+    <text x="765" y="118" text-anchor="middle" fill="#555">height + light (threads)</text>
+    <text x="765" y="136" text-anchor="middle" fill="#555">splat, colorize (threads)</text>
+
+    <rect x="890" y="70" width="180" height="80" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+    <text x="980" y="98" text-anchor="middle" font-weight="bold">5  DrawWorld</text>
+    <text x="980" y="118" text-anchor="middle" fill="#555">chibi overlay, light layer</text>
+    <text x="980" y="136" text-anchor="middle" fill="#555">particles, objects, ship</text>
+  </g>
+
+  <g>
+    <rect x="890" y="200" width="180" height="80" rx="8" fill="#fff4d6" stroke="#c98a1b"/>
+    <text x="980" y="228" text-anchor="middle" font-weight="bold">6  pixel levels only</text>
+    <text x="980" y="248" text-anchor="middle" fill="#555">low-res render, posterize</text>
+    <text x="980" y="266" text-anchor="middle" fill="#555">nearest upscale</text>
+
+    <rect x="670" y="200" width="190" height="80" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+    <text x="765" y="228" text-anchor="middle" font-weight="bold">7  DrawHud</text>
+    <text x="765" y="248" text-anchor="middle" fill="#555">menus, dotted pearl text</text>
+    <text x="765" y="266" text-anchor="middle" fill="#555">score, cut-in (35 %), bot bar</text>
+
+    <rect x="450" y="200" width="190" height="80" rx="8" fill="#ffe7c2" stroke="#c98a1b"/>
+    <text x="545" y="228" text-anchor="middle" font-weight="bold">8  FBuf.PutImage</text>
+    <text x="545" y="248" text-anchor="middle" fill="#555">CPU frame to TBGLBitmap</text>
+    <text x="545" y="266" text-anchor="middle" fill="#555">(power-of-two texture)</text>
+
+    <rect x="230" y="200" width="190" height="80" rx="8" fill="#ffe7c2" stroke="#c98a1b"/>
+    <text x="325" y="228" text-anchor="middle" font-weight="bold">9  BGLCanvas</text>
+    <text x="325" y="248" text-anchor="middle" fill="#555">StretchPutImage + shake</text>
+    <text x="325" y="266" text-anchor="middle" fill="#555">box filter on pixel levels</text>
+
+    <rect x="30" y="200" width="170" height="80" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+    <text x="115" y="228" text-anchor="middle" font-weight="bold">10  SwapBuffers</text>
+    <text x="115" y="248" text-anchor="middle" fill="#555">waits for vblank</text>
+    <text x="115" y="266" text-anchor="middle" fill="#555">(wglSwapInterval 1)</text>
+  </g>
+
+  <g stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M200 110 L228 110"/><path d="M420 110 L448 110"/><path d="M640 110 L668 110"/><path d="M860 110 L888 110"/>
+    <path d="M980 150 L980 198"/>
+    <path d="M890 240 L862 240"/><path d="M670 240 L642 240"/><path d="M450 240 L422 240"/><path d="M230 240 L202 240"/>
+  </g>
+
+  <g>
+    <rect x="30" y="320" width="1040" height="170" rx="8" fill="#fafafa" stroke="#bbb"/>
+    <text x="50" y="346" font-weight="bold">Parallel threads (outside the frame loop)</text>
+    <text x="50" y="372" fill="#333">TWavePoolWorker x (cores-1)    - mesh rows: height field, lighting, colorize (woken by RTL events)</text>
+    <text x="50" y="396" fill="#333">TAudioThread                   - waveOut, 4 buffers x 768 frames, music synth + SFX mixer + soft limiter</text>
+    <text x="50" y="420" fill="#333">TAnimeWorker x 2               - draws the next chibi frame (double buffered, 24 fps)</text>
+    <text x="50" y="444" fill="#333">Shared state:                  - Audio.Lock / Unlock around song / bank edits; game sets Music.Intensity, Fever, Sweep, Muffle, TimeScale</text>
+    <text x="50" y="468" fill="#777">Measured: normal level 7-9 ms per frame, anime level 11-14 ms, at 463 x 900 on 12 threads (60 fps vsync).</text>
+  </g>
+</svg>

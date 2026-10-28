@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="640" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Light FX: spectral ray tracing (uLightFx)</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+
+  <!-- prism refraction -->
+  <rect x="30" y="56" width="510" height="320" rx="8" fill="#fafafa" stroke="#bbb"/>
+  <text x="285" y="80" text-anchor="middle" font-weight="bold">1. Prism: every band has its own index</text>
+  <polygon points="250,330 360,130 470,330" fill="#e8f3ff" stroke="#5a7fb0" stroke-width="2"/>
+  <line x1="50" y1="270" x2="300" y2="236" stroke="#999" stroke-width="5"/>
+  <text x="60" y="296" fill="#555">white beam (N bands overlap)</text>
+  <g stroke-width="3" fill="none">
+    <path d="M300 236 L418 222 L530 250" stroke="#e53935"/>
+    <path d="M300 236 L420 228 L530 278" stroke="#fb8c00"/>
+    <path d="M300 236 L422 234 L530 306" stroke="#fdd835"/>
+    <path d="M300 236 L424 240 L530 334" stroke="#43a047"/>
+    <path d="M300 236 L426 247 L520 360" stroke="#1e88e5"/>
+    <path d="M300 236 L428 254 L500 366" stroke="#8e24aa"/>
+  </g>
+  <text x="60" y="110" fill="#333">n(t) = Index + Dispersion x (t - 0.5)</text>
+  <text x="60" y="132" fill="#333">t = 0 red (700 nm) .. 1 violet (400 nm)</text>
+  <text x="60" y="154" fill="#333">Snell: n1 sin(a1) = n2 sin(a2)</text>
+  <text x="60" y="176" fill="#333">Fresnel part reflects (Reflect)</text>
+  <text x="60" y="198" fill="#333">TIR when sin(a2) > 1 (MaxBounce)</text>
+
+  <!-- grating -->
+  <rect x="560" y="56" width="510" height="320" rx="8" fill="#fafafa" stroke="#bbb"/>
+  <text x="815" y="80" text-anchor="middle" font-weight="bold">2. Grating: orders m = -n .. n</text>
+  <line x1="640" y1="300" x2="990" y2="300" stroke="#5a7fb0" stroke-width="4" stroke-dasharray="3,3"/>
+  <line x1="815" y1="360" x2="815" y2="300" stroke="#999" stroke-width="5"/>
+  <text x="825" y="352" fill="#555">white light (charge)</text>
+  <g stroke-width="3">
+    <line x1="815" y1="300" x2="815" y2="110" stroke="#bbb"/>
+    <line x1="815" y1="300" x2="900" y2="120" stroke="#e53935"/>
+    <line x1="815" y1="300" x2="880" y2="118" stroke="#43a047"/>
+    <line x1="815" y1="300" x2="862" y2="116" stroke="#8e24aa"/>
+    <line x1="815" y1="300" x2="730" y2="120" stroke="#e53935"/>
+    <line x1="815" y1="300" x2="750" y2="118" stroke="#43a047"/>
+    <line x1="815" y1="300" x2="768" y2="116" stroke="#8e24aa"/>
+    <line x1="815" y1="300" x2="1000" y2="190" stroke="#e53935"/>
+    <line x1="815" y1="300" x2="630" y2="190" stroke="#e53935"/>
+  </g>
+  <text x="815" y="104" text-anchor="middle" fill="#777">m = 0</text>
+  <text x="900" y="112" fill="#555">m = +1</text>
+  <text x="690" y="112" fill="#555">m = -1</text>
+  <text x="1000" y="182" text-anchor="end" fill="#555">m = +2</text>
+  <text x="580" y="250" fill="#333">sin(out) = sin(in) + m x lambda x Pitch</text>
+  <text x="580" y="272" fill="#333">red bends most, violet least</text>
+
+  <!-- roles -->
+  <text x="550" y="410" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">One gameplay role per light (never static scenery)</text>
+  <g>
+    <rect x="30" y="430" width="250" height="180" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+    <text x="155" y="454" text-anchor="middle" font-weight="bold">Dispersion Prism</text>
+    <text x="45" y="478" fill="#333">Sentinel from Spectrum bonus</text>
+    <text x="45" y="498" fill="#333">10 s, slow random spin</text>
+    <text x="45" y="518" fill="#333">follows cursor very slowly</text>
+    <text x="45" y="538" fill="#333">predicts cursor 0.9 s ahead</text>
+    <text x="45" y="558" fill="#333">aims the white light with</text>
+    <text x="45" y="578" fill="#333">ProbeExit (120 directions)</text>
+    <text x="45" y="598" fill="#4a73c9">rainbow burns hazards</text>
+
+    <rect x="295" y="430" width="250" height="180" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+    <text x="420" y="454" text-anchor="middle" font-weight="bold">Newton's Prisms</text>
+    <text x="310" y="478" fill="#333">Guardian when combo > x3</text>
+    <text x="310" y="498" fill="#333">only one at a time, 7 s</text>
+    <text x="310" y="518" fill="#333">slow spin, slow follow</text>
+    <text x="310" y="538" fill="#333">rams hazards for the ship</text>
+    <text x="310" y="558" fill="#333">higher combo: +1 HP, +1.5 s</text>
+    <text x="310" y="578" fill="#333">each hit: weaker (HP - 1)</text>
+    <text x="310" y="598" fill="#3a9a52">12 s total maximum</text>
+
+    <rect x="560" y="430" width="250" height="180" rx="8" fill="#fff4d6" stroke="#c98a1b"/>
+    <text x="685" y="454" text-anchor="middle" font-weight="bold">Diffraction Grating</text>
+    <text x="575" y="478" fill="#333">Weapon, power from</text>
+    <text x="575" y="498" fill="#333">GratingCell pickups (no cap)</text>
+    <text x="575" y="518" fill="#333">hold LMB / Space: charge</text>
+    <text x="575" y="538" fill="#333">rate 4 + 3 sqrt(power)</text>
+    <text x="575" y="558" fill="#333">release: colour rays fan out</text>
+    <text x="575" y="578" fill="#333">range 380 + 150 sqrt(q)</text>
+    <text x="575" y="598" fill="#c98a1b">+50 per hazard destroyed</text>
+
+    <rect x="825" y="430" width="245" height="180" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+    <text x="947" y="454" text-anchor="middle" font-weight="bold">Diamond</text>
+    <text x="840" y="478" fill="#333">Only from Diamond bonus</text>
+    <text x="840" y="498" fill="#333">5 s, n = 2.42, spins</text>
+    <text x="840" y="518" fill="#333">above the ship</text>
+    <text x="840" y="538" fill="#333">its fire (spectral rays)</text>
+    <text x="840" y="558" fill="#333">pulls pickups to the ship</text>
+    <text x="840" y="578" fill="#333">(Pulled, up to 2200 px/s)</text>
+    <text x="840" y="598" fill="#b5427e">never placed in the scene</text>
+  </g>
+</svg>

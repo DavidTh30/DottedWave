@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="600" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Data flow: one descriptor list drives INI files and Studio panels</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+
+  <!-- files -->
+  <rect x="30" y="70" width="230" height="250" rx="8" fill="#fffbe0" stroke="#b8a400"/>
+  <text x="145" y="94" text-anchor="middle" font-weight="bold">data/  (text INI)</text>
+  <g fill="#333">
+    <text x="50" y="122">objects.ini   [Object0..]</text>
+    <text x="50" y="146">levels.ini    [Level0..]</text>
+    <text x="50" y="170">screens.ini   [Main]..[Light]</text>
+    <text x="50" y="194">sfx.ini       [Sfx0..] a.* b.*</text>
+    <text x="50" y="218">music.ini     [Song] [Track] [Pattern]</text>
+    <text x="50" y="242">light.ini     [Light0..3]</text>
+    <text x="50" y="266">anime/        user PNG / frames</text>
+  </g>
+  <text x="145" y="300" text-anchor="middle" fill="#777">missing file = built-in defaults</text>
+
+  <!-- TGameData -->
+  <rect x="330" y="70" width="250" height="250" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+  <text x="455" y="94" text-anchor="middle" font-weight="bold">TGameData (uGameData)</text>
+  <g fill="#333">
+    <text x="350" y="122">Objects : TObjDefs</text>
+    <text x="350" y="146">Levels  : TLevelDefs</text>
+    <text x="350" y="170">Screens : array[TScreenId]</text>
+    <text x="350" y="194">Sfx     : TSfxDefs</text>
+    <text x="350" y="218">Song    : TSong</text>
+    <text x="350" y="242">Light   : TLightDefs</text>
+  </g>
+  <text x="455" y="276" text-anchor="middle" fill="#3a9a52" font-weight="bold">Load* + migrate (DATA_VERSION 6)</text>
+  <text x="455" y="298" text-anchor="middle" fill="#777">Save* writes the same files</text>
+
+  <!-- descriptors -->
+  <rect x="650" y="70" width="420" height="250" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+  <text x="860" y="94" text-anchor="middle" font-weight="bold">Descriptors (uParams.TPBuilder)</text>
+  <text x="670" y="122" fill="#333">DescribeObject / Level / Screen / Sfx / Instrument /</text>
+  <text x="670" y="142" fill="#333">Section / LightDef  build a TPDescList:</text>
+  <rect x="670" y="156" width="380" height="74" rx="4" fill="#fff" stroke="#9ab"/>
+  <text x="682" y="176" font-family="Consolas, monospace" font-size="12" fill="#224">B.G('Motion');</text>
+  <text x="682" y="194" font-family="Consolas, monospace" font-size="12" fill="#224">B.E('motion', 'Motion', @O.Motion, MOTION_NAMES);</text>
+  <text x="682" y="212" font-family="Consolas, monospace" font-size="12" fill="#224">B.F('speed', 'Fall speed x', @O.Speed, 0.1, 4, 2);</text>
+  <text x="670" y="252" fill="#333">each entry: key, caption, kind (F I E B C S), min, max,</text>
+  <text x="670" y="272" fill="#333">decimals, enum items, hint, group, pointer to the field</text>
+  <text x="670" y="300" fill="#4a73c9" font-weight="bold">add a field = 1 line here</text>
+
+  <!-- consumers -->
+  <rect x="120" y="400" width="250" height="110" rx="8" fill="#fff" stroke="#888"/>
+  <text x="245" y="426" text-anchor="middle" font-weight="bold">ReadDescs / WriteDescs</text>
+  <text x="245" y="450" text-anchor="middle" fill="#555">key=value per field</text>
+  <text x="245" y="470" text-anchor="middle" fill="#555">floats with '.', enums by name,</text>
+  <text x="245" y="490" text-anchor="middle" fill="#555">colors #RRGGBB[AA], bool 0/1</text>
+
+  <rect x="425" y="400" width="250" height="110" rx="8" fill="#fff" stroke="#888"/>
+  <text x="550" y="426" text-anchor="middle" font-weight="bold">uParamPanel (Studio)</text>
+  <text x="550" y="450" text-anchor="middle" fill="#555">slider + spin per float/int,</text>
+  <text x="550" y="470" text-anchor="middle" fill="#555">combo per enum, checkbox, color,</text>
+  <text x="550" y="490" text-anchor="middle" fill="#555">grouped, hint as tooltip</text>
+
+  <rect x="730" y="400" width="250" height="110" rx="8" fill="#fff" stroke="#888"/>
+  <text x="855" y="426" text-anchor="middle" font-weight="bold">tools/docgen</text>
+  <text x="855" y="450" text-anchor="middle" fill="#555">writes docs/dev/ref_*.md</text>
+  <text x="855" y="470" text-anchor="middle" fill="#555">(every field + every default)</text>
+  <text x="855" y="490" text-anchor="middle" fill="#555">so docs never drift from code</text>
+
+  <g stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M260 180 L328 180"/>
+    <path d="M330 220 L262 220"/>
+    <path d="M580 195 L648 195"/>
+    <path d="M760 320 L300 398"/>
+    <path d="M860 320 L560 398"/>
+    <path d="M920 320 L870 398"/>
+  </g>
+  <text x="294" y="172" text-anchor="middle" fill="#555" font-size="11">load</text>
+  <text x="294" y="238" text-anchor="middle" fill="#555" font-size="11">save</text>
+
+  <text x="550" y="560" text-anchor="middle" fill="#666">The game (TWaveGame) only reads TGameData. Studio editors edit the same records live, so the preview is the real game.</text>
+</svg>

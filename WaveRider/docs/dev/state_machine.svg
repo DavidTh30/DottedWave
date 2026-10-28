@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 560" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="560" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Game states (TGameState in uGame)</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+  <g font-weight="bold">
+    <rect x="460" y="60" width="180" height="50" rx="25" fill="#e8f0ff" stroke="#4a73c9"/><text x="550" y="90" text-anchor="middle">gsMenu</text>
+    <rect x="120" y="170" width="160" height="50" rx="25" fill="#e8f0ff" stroke="#4a73c9"/><text x="200" y="200" text-anchor="middle">gsLevels</text>
+    <rect x="460" y="170" width="180" height="50" rx="25" fill="#e8f0ff" stroke="#4a73c9"/><text x="550" y="200" text-anchor="middle">gsOptions</text>
+    <rect x="800" y="170" width="180" height="50" rx="25" fill="#e8f0ff" stroke="#4a73c9"/><text x="890" y="200" text-anchor="middle">gsLight (Light Lab)</text>
+    <rect x="90" y="300" width="220" height="50" rx="25" fill="#fff4d6" stroke="#c98a1b"/><text x="200" y="322" text-anchor="middle">gsReady (3-2-1)</text><text x="200" y="340" text-anchor="middle" font-weight="normal" font-size="11" fill="#8a5a00">level card: LEVEL n / NAME / subtitle</text>
+    <rect x="460" y="300" width="180" height="50" rx="25" fill="#e6f6ea" stroke="#3a9a52"/><text x="550" y="330" text-anchor="middle">gsPlaying</text>
+    <rect x="800" y="300" width="180" height="50" rx="25" fill="#fbe9f3" stroke="#b5427e"/><text x="890" y="330" text-anchor="middle">gsPaused</text>
+    <rect x="300" y="440" width="180" height="50" rx="25" fill="#e6f6ea" stroke="#3a9a52"/><text x="390" y="470" text-anchor="middle">gsComplete</text>
+    <rect x="620" y="440" width="180" height="50" rx="25" fill="#f9e0e0" stroke="#c94a4a"/><text x="710" y="470" text-anchor="middle">gsGameOver</text>
+  </g>
+  <g stroke="#444" stroke-width="1.5" fill="none" marker-end="url(#a)">
+    <path d="M480 108 L260 172"/><path d="M550 110 L550 168"/><path d="M620 108 L840 172"/>
+    <path d="M200 220 L200 298"/>
+    <path d="M310 325 L458 325"/>
+    <path d="M640 318 L798 318"/><path d="M798 336 L310 345"/>
+    <path d="M500 350 L420 438"/><path d="M600 350 L690 438"/>
+    <path d="M300 465 Q60 465 120 330"/>
+    <path d="M840 300 Q840 120 640 90"/>
+  </g>
+  <g fill="#333">
+    <text x="300" y="130">PLAY</text><text x="560" y="145">OPTIONS</text><text x="720" y="130">LIGHT LAB</text>
+    <text x="210" y="265">pick level</text>
+    <text x="330" y="315">countdown ends</text>
+    <text x="660" y="308">Esc / P / focus lost</text>
+    <text x="450" y="362">RESUME (via Ready)</text>
+    <text x="350" y="405">time up</text><text x="660" y="405">lives = 0</text>
+    <text x="40" y="410">NEXT / RETRY</text>
+    <text x="860" y="150">MAIN MENU (run kept,</text><text x="860" y="166">menu shows CONTINUE)</text>
+  </g>
+  <text x="550" y="530" text-anchor="middle" fill="#666">WATCH BOT and SimLevel / SimObject / SimScreen (Studio previews) drive the same states; FShow and SimMode stop progress from being saved.</text>
+</svg>

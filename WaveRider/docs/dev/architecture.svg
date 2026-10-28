@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 760" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="760" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">WAVE RIDER - Architecture (units and dependencies)</text>
+
+  <!-- executables -->
+  <g>
+    <rect x="40" y="60" width="300" height="70" rx="8" fill="#ffe7c2" stroke="#c98a1b"/>
+    <text x="190" y="88" text-anchor="middle" font-weight="bold">WaveRider.exe</text>
+    <text x="190" y="108" text-anchor="middle" fill="#555">WaveRider.lpr  -  uGameForm (OpenGL, vsync)</text><text x="190" y="124" text-anchor="middle" fill="#777" font-size="11">--shot (headless) / --demo N</text>
+    <rect x="400" y="60" width="300" height="70" rx="8" fill="#ffe7c2" stroke="#c98a1b"/>
+    <text x="550" y="88" text-anchor="middle" font-weight="bold">WaveRiderStudio.exe</text>
+    <text x="550" y="108" text-anchor="middle" fill="#555">uStudioMain + 6 editors (LCL)</text>
+    <rect x="760" y="60" width="300" height="70" rx="8" fill="#ffe7c2" stroke="#c98a1b"/>
+    <text x="910" y="88" text-anchor="middle" font-weight="bold">DottedWave.exe</text>
+    <text x="910" y="108" text-anchor="middle" fill="#555">mesh editor (original project)</text>
+  </g>
+
+  <!-- studio layer -->
+  <rect x="400" y="160" width="300" height="120" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+  <text x="550" y="182" text-anchor="middle" font-weight="bold">Studio units (studio/src)</text>
+  <text x="415" y="204" fill="#333">uEdBase  uParamPanel  uPreview</text>
+  <text x="415" y="224" fill="#333">uEdScreens  uEdSound  uEdMusic</text>
+  <text x="415" y="244" fill="#333">uEdLevels  uEdObjects  uEdLight</text>
+  <text x="415" y="266" fill="#777">every editor: TGamePreview = live TWaveGame</text>
+
+  <!-- game layer -->
+  <rect x="40" y="310" width="660" height="150" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+  <text x="370" y="334" text-anchor="middle" font-weight="bold">Game layer (src)</text>
+  <rect x="60" y="348" width="190" height="96" rx="6" fill="#fff" stroke="#3a9a52"/>
+  <text x="155" y="370" text-anchor="middle" font-weight="bold">uGame</text>
+  <text x="155" y="390" text-anchor="middle" fill="#555">TWaveGame</text>
+  <text x="155" y="408" text-anchor="middle" fill="#555">states, spawn, bot,</text>
+  <text x="155" y="426" text-anchor="middle" fill="#555">weapons, HUD, menus</text>
+  <rect x="265" y="348" width="130" height="44" rx="6" fill="#fff" stroke="#3a9a52"/>
+  <text x="330" y="375" text-anchor="middle">uGameView</text>
+  <rect x="265" y="400" width="130" height="44" rx="6" fill="#fff" stroke="#3a9a52"/>
+  <text x="330" y="427" text-anchor="middle">uGfx (text, glow)</text>
+  <rect x="410" y="348" width="130" height="44" rx="6" fill="#fff" stroke="#3a9a52"/>
+  <text x="475" y="375" text-anchor="middle">uLightFx</text>
+  <rect x="410" y="400" width="130" height="44" rx="6" fill="#fff" stroke="#3a9a52"/>
+  <text x="475" y="427" text-anchor="middle">uAnime (chibi)</text>
+  <rect x="555" y="348" width="130" height="96" rx="6" fill="#fff" stroke="#3a9a52"/>
+  <text x="620" y="380" text-anchor="middle" font-weight="bold">uGameData</text>
+  <text x="620" y="400" text-anchor="middle" fill="#555">objects, levels,</text>
+  <text x="620" y="418" text-anchor="middle" fill="#555">screens, light</text>
+
+  <!-- audio layer -->
+  <rect x="760" y="310" width="300" height="150" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+  <text x="910" y="334" text-anchor="middle" font-weight="bold">Audio (src)</text>
+  <rect x="780" y="348" width="120" height="44" rx="6" fill="#fff" stroke="#b5427e"/>
+  <text x="840" y="375" text-anchor="middle">uAudio</text>
+  <rect x="920" y="348" width="120" height="44" rx="6" fill="#fff" stroke="#b5427e"/>
+  <text x="980" y="375" text-anchor="middle">uMusic</text>
+  <rect x="850" y="400" width="120" height="44" rx="6" fill="#fff" stroke="#b5427e"/>
+  <text x="910" y="427" text-anchor="middle">uSynth</text>
+
+  <!-- foundation -->
+  <rect x="40" y="490" width="1020" height="110" rx="8" fill="#f2f2f2" stroke="#888"/>
+  <text x="550" y="514" text-anchor="middle" font-weight="bold">Foundation</text>
+  <rect x="60" y="528" width="200" height="56" rx="6" fill="#fff" stroke="#888"/>
+  <text x="160" y="552" text-anchor="middle" font-weight="bold">uWaveEngine</text>
+  <text x="160" y="571" text-anchor="middle" fill="#555">dotted mesh, threads</text>
+  <rect x="275" y="528" width="160" height="56" rx="6" fill="#fff" stroke="#888"/>
+  <text x="355" y="552" text-anchor="middle">uWaveTypes</text>
+  <text x="355" y="571" text-anchor="middle" fill="#555">mesh params, presets</text>
+  <rect x="450" y="528" width="150" height="56" rx="6" fill="#fff" stroke="#888"/>
+  <text x="525" y="560" text-anchor="middle">uSimplexNoise</text>
+  <rect x="615" y="528" width="150" height="56" rx="6" fill="#fff" stroke="#888"/>
+  <text x="690" y="552" text-anchor="middle">uPlatform</text>
+  <text x="690" y="571" text-anchor="middle" fill="#555">QPC clock, vsync</text>
+  <rect x="780" y="528" width="260" height="56" rx="6" fill="#fff" stroke="#888"/>
+  <text x="910" y="552" text-anchor="middle" font-weight="bold">uParams</text>
+  <text x="910" y="571" text-anchor="middle" fill="#555">descriptors - INI + editor panels</text>
+  <text x="550" y="616" text-anchor="middle" fill="#777">(foundation units live in ../DottedWave/src except uParams)</text>
+
+  <!-- libraries -->
+  <rect x="40" y="640" width="1020" height="90" rx="8" fill="#fffbe0" stroke="#b8a400"/>
+  <text x="550" y="664" text-anchor="middle" font-weight="bold">Libraries / OS</text>
+  <text x="550" y="690" text-anchor="middle" fill="#444">BGRABitmapPack (CPU drawing, TBGLBitmap)   -   LazOpenGLContext (TOpenGLControl)   -   LCL</text>
+  <text x="550" y="712" text-anchor="middle" fill="#444">FPC RTL threads / RTL events   -   winmm.dll waveOut (MMSystem)   -   wglSwapIntervalEXT (GLext)</text>
+
+  <!-- arrows -->
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#666"/></marker></defs>
+  <g stroke="#666" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M190 130 L190 345"/>
+    <path d="M550 130 L550 158"/>
+    <path d="M550 280 L550 345"/>
+    <path d="M910 130 L160 525"/>
+    <path d="M250 396 L262 370"/>
+    <path d="M700 385 L778 370"/>
+    <path d="M370 460 L370 488"/>
+    <path d="M910 460 L910 488"/>
+    <path d="M550 600 L550 638"/>
+  </g>
+</svg>

@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" font-family="Segoe UI, Arial, sans-serif" font-size="13">
+  <rect width="1100" height="600" fill="#ffffff"/>
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#222">Audio: one synth voice for SFX and music, mixed on its own thread</text>
+  <defs><marker id="a" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#444"/></marker></defs>
+
+  <!-- voice chain -->
+  <text x="40" y="70" font-weight="bold">Voice (uSynth.VoiceSample)</text>
+  <g>
+    <rect x="40" y="84" width="150" height="70" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+    <text x="115" y="108" text-anchor="middle" font-weight="bold">OSC x2</text>
+    <text x="115" y="128" text-anchor="middle" fill="#555">sine/saw/square/</text>
+    <text x="115" y="144" text-anchor="middle" fill="#555">tri/noise polyBLEP</text>
+    <rect x="210" y="84" width="140" height="70" rx="8" fill="#e8f0ff" stroke="#4a73c9"/>
+    <text x="280" y="108" text-anchor="middle" font-weight="bold">+ SUB + NOISE</text>
+    <text x="280" y="128" text-anchor="middle" fill="#555">sub = 1 octave down</text>
+    <rect x="370" y="84" width="150" height="70" rx="8" fill="#e6f6ea" stroke="#3a9a52"/>
+    <text x="445" y="108" text-anchor="middle" font-weight="bold">pitch</text>
+    <text x="445" y="128" text-anchor="middle" fill="#555">env (808 drop), slide</text>
+    <text x="445" y="144" text-anchor="middle" fill="#555">vibrato, LFO, arp</text>
+    <rect x="540" y="84" width="150" height="70" rx="8" fill="#fff4d6" stroke="#c98a1b"/>
+    <text x="615" y="108" text-anchor="middle" font-weight="bold">TPT SVF filter</text>
+    <text x="615" y="128" text-anchor="middle" fill="#555">LP/HP/BP + env</text>
+    <text x="615" y="144" text-anchor="middle" fill="#555">+ LFO (wobble, sync)</text>
+    <rect x="710" y="84" width="150" height="70" rx="8" fill="#fbe9f3" stroke="#b5427e"/>
+    <text x="785" y="108" text-anchor="middle" font-weight="bold">drive + crush</text>
+    <text x="785" y="128" text-anchor="middle" fill="#555">tanh, bit-crush,</text>
+    <text x="785" y="144" text-anchor="middle" fill="#555">sample-hold</text>
+    <rect x="880" y="84" width="180" height="70" rx="8" fill="#f2f2f2" stroke="#888"/>
+    <text x="970" y="108" text-anchor="middle" font-weight="bold">ADSR x volume</text>
+    <text x="970" y="128" text-anchor="middle" fill="#555">control rate: every</text>
+    <text x="970" y="144" text-anchor="middle" fill="#555">8 samples</text>
+  </g>
+  <g stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M190 119 L208 119"/><path d="M350 119 L368 119"/><path d="M520 119 L538 119"/><path d="M690 119 L708 119"/><path d="M860 119 L878 119"/>
+  </g>
+
+  <!-- SFX and music -->
+  <rect x="40" y="200" width="480" height="170" rx="8" fill="#fafafa" stroke="#bbb"/>
+  <text x="280" y="224" text-anchor="middle" font-weight="bold">Sound FX (25, offline)</text>
+  <text x="60" y="250" fill="#333">TSfxDef = layer A (character) + layer B (bass) + echo</text>
+  <text x="60" y="272" fill="#333">RenderSfx -> sample buffer once (cache)</text>
+  <text x="60" y="294" fill="#333">heavy sounds: 55 - 72 % energy below 120 Hz</text>
+  <text x="60" y="316" fill="#333">Snd(name, x, vol, pitch): pan from x, pitch shift</text>
+  <text x="60" y="338" fill="#333">names come from objects (sfx field) and game events</text>
+
+  <rect x="580" y="200" width="480" height="170" rx="8" fill="#fafafa" stroke="#bbb"/>
+  <text x="820" y="224" text-anchor="middle" font-weight="bold">Music (TSongPlayer, real time)</text>
+  <text x="600" y="250" fill="#333">Pearl Pressure: 140 BPM, 8 tracks, 6 patterns, 9 sections</text>
+  <text x="600" y="272" fill="#333">32 steps per pattern, up to 6 voices per track</text>
+  <text x="600" y="294" fill="#333">section progression transposes each repeat</text>
+  <text x="600" y="316" fill="#333">layers fade in by energy + Intensity (IntensityMin)</text>
+  <text x="600" y="338" fill="#333">kick ducks tracks (Sidechain), master LP, echo</text>
+
+  <!-- game reactivity -->
+  <rect x="580" y="390" width="480" height="140" rx="8" fill="#eef1ff" stroke="#4a73c9"/>
+  <text x="820" y="414" text-anchor="middle" font-weight="bold">Game -> music (UpdateMusic, smoothed)</text>
+  <text x="600" y="438" fill="#333">Intensity  combo (+ difficulty)  layers, filter, wobble x2</text>
+  <text x="600" y="460" fill="#333">Fever      fever bonus           1/16 trance gate + drive</text>
+  <text x="600" y="482" fill="#333">Sweep      bonus pickup          filter sweep + echo throw</text>
+  <text x="600" y="504" fill="#333">Muffle     pause / game over     low-pass + quieter</text>
+  <text x="600" y="526" fill="#333">TimeScale  slow-mo 0.82          tape slow-down</text>
+
+  <!-- thread -->
+  <rect x="40" y="390" width="480" height="140" rx="8" fill="#ffe7c2" stroke="#c98a1b"/>
+  <text x="280" y="414" text-anchor="middle" font-weight="bold">TAudioThread (uAudio)</text>
+  <text x="60" y="438" fill="#333">waveOut 44.1 kHz, stereo, 16-bit</text>
+  <text x="60" y="460" fill="#333">4 buffers x 768 frames (about 70 ms latency)</text>
+  <text x="60" y="482" fill="#333">music + SFX voices -> soft-clip limiter</text>
+  <text x="60" y="504" fill="#333">Audio.Lock / Unlock around song or bank edits</text>
+  <text x="60" y="526" fill="#333">about 5 % of one core (music ~20x real time)</text>
+
+  <g stroke="#444" stroke-width="1.6" fill="none" marker-end="url(#a)">
+    <path d="M280 154 L280 198"/><path d="M820 154 L820 198"/>
+    <path d="M280 370 L280 388"/><path d="M820 370 L520 420"/>
+    <path d="M580 460 L522 460"/>
+  </g>
+  <text x="550" y="578" text-anchor="middle" fill="#666">No external audio DLL: winmm.dll only. Studio Sound FX / Music editors render the same voices and can export WAV.</text>
+</svg>
